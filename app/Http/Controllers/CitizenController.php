@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class CitizenController extends Controller
 {
     
@@ -13,8 +15,35 @@ class CitizenController extends Controller
     }
 
     public function AddCitizen(){
-
-       return view('citizenform'); 
+       
+       $states = DB::table('states')
+            ->get();
+       return view('citizenform',compact('states')); 
     }
+
+
+    public function getLgas(Request $request){
+
+        $lgas = DB::table('lgas')
+            ->where('state_id', $request->state_id)
+            ->get();
+        
+        if (count($lgas) > 0) {
+            return response()->json($lgas);
+        }
+    }
+
+
+    public function getWards(Request $request){
+
+        $wards = DB::table('wards')
+            ->where('lga_id', $request->lga_id)
+            ->get();
+        
+        if (count($wards) > 0) {
+            return response()->json($wards);
+        }
+    }
+
 
 }
