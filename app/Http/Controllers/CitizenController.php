@@ -46,4 +46,16 @@ class CitizenController extends Controller
     }
 
 
+    public function mycitizen(Request $request){
+
+
+        $input = $request->all();
+
+        $send = Citizen::create($input);
+
+
+        return redirect()->back();
+    }
+
+
 }

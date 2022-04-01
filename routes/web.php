@@ -26,3 +26,5 @@ Route::get('/addcitizen', 'CitizenController@AddCitizen')->name('addcitizen');
 Route::get('get-lgas', 'CitizenController@getLgas')->name('getLgas');
 
 Route::get('get-wards', 'CitizenController@getWards')->name('getWards');
+
+Route::post('mycitizen', 'CitizenController@mycitizen')->name('mycitizen');
